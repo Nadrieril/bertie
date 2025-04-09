@@ -1,12 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    crane = {
-      url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hax.url = "github:hacspec/hax";
+    nixpkgs.follows = "hax/nixpkgs";
+    crane.follows = "hax/crane";
+    flake-utils.follows = "hax/flake-utils";
   };
   outputs = inputs: inputs.flake-utils.lib.eachDefaultSystem (system:
     let
